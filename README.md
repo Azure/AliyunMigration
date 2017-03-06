@@ -6,5 +6,5 @@
 
 ### 虚机迁移
 
-* [Windows Server 2008R2/2012/2012R2/2016]()
-* [CentOS 6.8]()
+* [Windows Server 2008R2/2012/2012R2/2016](https://github.com/Azure/AliyunMigration/tree/master/WindowsServer)
+* [CentOS 6.8](https://github.com/Azure/AliyunMigration/tree/master/Linux/CentOS)
