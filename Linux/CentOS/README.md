@@ -29,8 +29,9 @@
 
 在此步骤中，我们将进行服务器的调整以兼容于Azure的环境。
 
-1. 用具有管理员权限的账户登入阿里云的Linux虚机
-2. 修改 /etc/sysconfig/network
+1.用具有管理员权限的账户登入阿里云的Linux虚机
+
+2.修改 /etc/sysconfig/network
 
 ```bash
 vi /etc/sysconfig/network
@@ -43,7 +44,7 @@ NETWORKING=yes
 HOSTNAME=localhost.localdomain
 ```
 
-3. 修改 /etc/sysconfig/network-scripts/ifcfg-eth0
+3.修改 /etc/sysconfig/network-scripts/ifcfg-eth0
 
 ```bash
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -61,7 +62,7 @@ PEERDNS=yes
 IPV6INIT=no
 ```
 
-4. 修改 /etc/sysconfig/network-scripts/ifcfg-eth1，将其禁用
+4.修改 /etc/sysconfig/network-scripts/ifcfg-eth1，将其禁用
 
 ```bash
 vi /etc/sysconfig/network-scripts/ifcfg-eth0
@@ -77,14 +78,14 @@ DEVICE=eth1
 #NETMASK=255.255.255.0
 ```
 
-5. 修改 udev 规则，以避免产生以太网接口的静态规则。在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则会引发问题：
+5.修改 udev 规则，以避免产生以太网接口的静态规则。在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则会引发问题：
 
 ```bash
 sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 ```
 
-6. 修改服务启动的配置，禁用阿里云的服务
+6.修改服务启动的配置，禁用阿里云的服务
 
 ```bash
 sudo chkconfig network on
@@ -92,13 +93,13 @@ sudo chkconfig aegis off
 sudo chkconfig aliyun-util off
 ```
 
-7. 更新镜像库
+7.更新镜像库
 
 ```bash
 wget -q https://aliyunmigration.blob.core.chinacloudapi.cn/packages/CentOS-Base.repo -O /etc/yum.repos.d/CentOS-Base.repo
 ```
 
-8. 修改 /etc/yum.conf
+8.修改 /etc/yum.conf
 
 ```bash
 vi /etc/yum.conf
@@ -110,26 +111,26 @@ vi /etc/yum.conf
 http_caching=packages
 ```
 
-9. 清除yum元数据并进行更新
+9.清除yum元数据并进行更新
 
 ```bash
 yum clean all
 sudo yum -y update
 ```
 
-10. 安装 Azure Linux 代理和依赖项
+10.安装 Azure Linux 代理和依赖项
 
 ```bash
 sudo yum install python-pyasn1 WALinuxAgent
 ```
 
-11. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器(vi)中打开 /boot/grub/menu.lst，并确保默认内核包含以下参数
+11.在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器(vi)中打开 /boot/grub/menu.lst，并确保默认内核包含以下参数
 
 ```
 console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 ```
 
-12. 编辑磁盘文件，将不需用到的磁盘禁用
+12.编辑磁盘文件，将不需用到的磁盘禁用
 
 ```bash
 vi /etc/fstab
