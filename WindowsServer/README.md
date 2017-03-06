@@ -29,7 +29,7 @@
 在此步骤中，我们将进行服务器的调整以兼容于Azure的环境。
 
 1. 用具有管理员权限的账户登入阿里云的Windows Server虚机
-2. 在阿里云的虚机内下载[工具包]()
+2. 在阿里云的虚机内下载[工具包](https://aliyunmigration.blob.core.chinacloudapi.cn/packages/AliyunWindowsTool.zip)
 3. 解压缩工具包
 4. 执行AliyunWindowsPreparation.ps1
 
@@ -37,7 +37,7 @@
 
 ## 导出磁盘
 
-在Windows Server中，我们所使用的工具是[disk2vhd](https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)，在之前下载的[工具包]()内tools的文件夹已经包含，或者也可以单独下载。
+在Windows Server中，我们所使用的工具是[disk2vhd](https://technet.microsoft.com/en-us/sysinternals/ee656415.aspx)，在之前下载的[工具包](https://aliyunmigration.blob.core.chinacloudapi.cn/packages/AliyunWindowsTool.zip)内tools的文件夹已经包含，或者也可以单独下载。
 
 执行这个disk2vhd，选择要备份的磁盘并将备份的目标路径指向刚才挂载的磁盘上，并取消勾选*use vhdx*，最后点选*create*。
 
@@ -48,7 +48,7 @@
 在此我们将运用Azure PowerShell将刚才导出的磁盘上传至先前创建的存储账户中。
 
 1. 用具有管理员权限的账户登入阿里云的Windows Server虚机
-2. 在阿里云的虚机内下载[工具包]() (若之前下载过可省略2.3.步骤)
+2. 在阿里云的虚机内下载[工具包](https://aliyunmigration.blob.core.chinacloudapi.cn/packages/AliyunWindowsTool.zip) (若之前下载过可省略2.3.步骤)
 3. 解压缩工具包
 4. 在tools文件夹中，执行vhdUploader.ps1
 
