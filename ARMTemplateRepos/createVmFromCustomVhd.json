@@ -240,7 +240,6 @@
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('asName'))]"
         }
       }
-      }
     },
     {
       "name": "[variables('nsgName')]",
