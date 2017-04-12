@@ -232,9 +232,10 @@
           ]
         },
         "diagnosticsProfile": {
-        "bootDiagnostics": {
-          "enabled": "true",
-          "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('diagStorageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
+          "bootDiagnostics": {
+            "enabled": "true",
+            "storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('diagStorageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
+          }
         },
         "availabilitySet": {
           "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('asName'))]"
