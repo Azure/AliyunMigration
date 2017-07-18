@@ -67,7 +67,7 @@ IPV6INIT=no
 4.修改 /etc/sysconfig/network-scripts/ifcfg-eth1，将其禁用
 
 ```bash
-vi /etc/sysconfig/network-scripts/ifcfg-eth0
+vi /etc/sysconfig/network-scripts/ifcfg-eth1
 ```
 
 修改为
